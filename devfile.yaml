@@ -22,4 +22,7 @@ projects:
 components:
   - alias: ansible-plugin
     type: chePlugin
-    reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml 
+    reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml
+  - id: redhat/vscode-yaml/latest
+    type: chePlugin
+
