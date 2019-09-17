@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  name: ansible
+  generateName: che-ansible-demo-
 projects:
   - name: workshop
     source:
@@ -20,9 +20,21 @@ projects:
       type: git
       branch: dev
 components:
-  - alias: ansible-plugin
+
+  - alias: ansible
+    type: dockerimage
+    image: quay.io/victorock/che-remote-plugin-ansible
+    memoryLimit: 512M
+    mountSources: true
+    args:
+      - tail
+      - '-f'
+      - /dev/null
+
+  - alias: ansible-plugin-
     type: chePlugin
     reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml
+
   - id: redhat/vscode-yaml/latest
     type: chePlugin
 
