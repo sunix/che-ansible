@@ -23,7 +23,7 @@ components:
 
   - alias: ansible
     type: dockerimage
-    image: che-ansible
+    image: quay.io/sunix/che-remote-plugin-ansible:sun
     memoryLimit: 512M
     mountSources: true
     command:
