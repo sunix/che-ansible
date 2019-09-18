@@ -23,17 +23,18 @@ components:
 
   - alias: ansible
     type: dockerimage
-    image: quay.io/victorock/che-remote-plugin-ansible
+    image: che-ansible
     memoryLimit: 512M
     mountSources: true
-    args:
+    command:
       - tail
+    args:
       - '-f'
       - /dev/null
 
   - alias: ansible-plugin-
     type: chePlugin
-    reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml
+    reference: https://raw.githubusercontent.com/sunix/che-ansible/local/plugin/meta.yaml
 
   - id: redhat/vscode-yaml/latest
     type: chePlugin
