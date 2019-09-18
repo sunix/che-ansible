@@ -39,3 +39,12 @@ components:
   - id: redhat/vscode-yaml/latest
     type: chePlugin
 
+commands:
+  - name: ansible-playbook provision_lab.yml -vvv
+    actions:
+      - type: exec
+        command: ansible-playbook provision_lab.yml -vvv
+        component: ansible
+        workdir: /projects/workshop/provisioner
+
+
