@@ -14,7 +14,7 @@ projects:
 components:
   - alias: ansible
     type: dockerimage
-    image: quay.io/sunix/che-remote-plugin-ansible:latest
+    image: quay.io/sunix/che-remote-plugin-ansible
     memoryLimit: 512M
     mountSources: true
     command:
@@ -23,7 +23,7 @@ components:
       - '-f'
       - /dev/null
 
-  - alias: ansible-plugin-
+  - alias: ansible-plugin
     type: chePlugin
     reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml
 
