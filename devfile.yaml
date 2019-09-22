@@ -22,7 +22,17 @@ components:
     args:
       - '-f'
       - /dev/null
-
+    env:
+      - name: GIT_AUTHOR_NAME
+        valueFrom:
+          secretKeyRef:
+            name: git
+            key: username
+      - name: GIT_AUTHOR_EMAIL
+        valueFrom:
+          secretKeyRef:
+            name: git
+            key: email
   - alias: ansible-plugin
     type: chePlugin
     reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml
