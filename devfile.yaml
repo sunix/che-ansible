@@ -12,27 +12,41 @@ projects:
       type: git
 
 components:
+
   - alias: ansible
-    type: dockerimage
-    image: quay.io/sunix/che-remote-plugin-ansible
-    memoryLimit: 512M
+    type: kubernetes
+    reference: ansible.yaml
+    referenceContent: |
+        kind: List
+        items:
+          - apiVersion: v1
+            kind: Pod
+            metadata:
+              name: ansible
+            spec:
+              containers:
+                - name: ansible
+                  image: quay.io/sunix/che-remote-plugin-ansible
+                  env:
+                    - name: GIT_AUTHOR_NAME
+                      valueFrom:
+                        secretKeyRef:
+                          name: git
+                          key: username
+                    - name: GIT_AUTHOR_EMAIL
+                      valueFrom:
+                        secretKeyRef:
+                          name: git
+                          key: email
+                  resources:
+                    limits:
+                      memory: 512Mi
+                  command:
+                    - tail
+                  args:
+                    - '-f'
+                    - /dev/null 
     mountSources: true
-    command:
-      - tail
-    args:
-      - '-f'
-      - /dev/null
-    env:
-      - name: GIT_AUTHOR_NAME
-        valueFrom:
-          secretKeyRef:
-            name: git
-            key: username
-      - name: GIT_AUTHOR_EMAIL
-        valueFrom:
-          secretKeyRef:
-            name: git
-            key: email
   - alias: ansible-plugin
     type: chePlugin
     reference: https://raw.githubusercontent.com/sunix/che-ansible/master/plugin/meta.yaml
