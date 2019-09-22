@@ -2,25 +2,16 @@ apiVersion: 1.0.0
 metadata:
   generateName: che-ansible-demo-
 projects:
-  - name: workshop
+  - name: workshops
     source:
       location: 'https://github.com/ansible/workshops'
       type: git
-  - name: example
+  - name: examples
     source:
       location: 'https://github.com/ansible/ansible-examples'
       type: git
-  - name: jetpack
-    source:
-      location: 'https://github.com/nmake/jetpack'
-      type: git
-  - name: ansible-role-net-setup
-    source:
-      location: 'https://github.com/victorock/ansible-role-net-setup'
-      type: git
-      branch: dev
-components:
 
+components:
   - alias: ansible
     type: dockerimage
     image: quay.io/sunix/che-remote-plugin-ansible:latest
@@ -40,10 +31,24 @@ components:
     type: chePlugin
 
 commands:
-  - name: ansible-playbook provision_lab.yml -vvv
+  - name: "Workshop: RHEL"
     actions:
       - type: exec
-        command: ansible-playbook provision_lab.yml -vvv
+        command: ansible-playbook provision_lab.yml -e ansible_python_interpreter=/opt/app-root/bin/python3 -e @sample_workshops/sample-vars-rhel.yml
+        component: ansible
+        workdir: /projects/workshop/provisioner
+
+  - name: "Workshop: Networking"
+    actions:
+      - type: exec
+        command: ansible-playbook provision_lab.yml -e ansible_python_interpreter=/opt/app-root/bin/python3 -e @sample_workshops/sample-vars-networking.yml
+        component: ansible
+        workdir: /projects/workshop/provisioner
+
+  - name: "Workshop: Security"
+    actions:
+      - type: exec
+        command: ansible-playbook provision_lab.yml -e ansible_python_interpreter=/opt/app-root/bin/python3 -e @sample_workshops/sample-vars-f5.yml
         component: ansible
         workdir: /projects/workshop/provisioner
 
