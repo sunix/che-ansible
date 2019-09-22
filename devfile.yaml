@@ -15,7 +15,6 @@ components:
 
   - alias: ansible
     type: kubernetes
-    reference: ansible.yaml
     referenceContent: |
         kind: List
         items:
