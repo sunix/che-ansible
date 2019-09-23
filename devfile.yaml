@@ -7,7 +7,12 @@ projects:
       location: 'https://github.com/victorock/demopoc'
       type: git
       branch: dev
-  - name: workshops
+  - name: ansible-role-tower-config
+    source:
+      location: 'https://github.com/victorock/ansible-role-tower-config'
+      type: git
+      branch: dev
+- name: workshops
     source:
       location: 'https://github.com/ansible/workshops'
       type: git
@@ -36,6 +41,12 @@ components:
     type: chePlugin
 
 commands:
+  - name: "Molecule: Test"
+    actions:
+      - type: exec
+        command: molecule test
+        component: ansible
+        workdir: /projects/ansible-role-tower-config/molecule
   - name: "Workshop: RHEL"
     actions:
       - type: exec
