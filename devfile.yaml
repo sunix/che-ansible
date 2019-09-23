@@ -41,10 +41,10 @@ components:
     type: chePlugin
 
 commands:
-  - name: "Molecule: Test"
+  - name: "Molecule: Lint"
     actions:
       - type: exec
-        command: molecule test
+        command: molecule lint
         component: ansible
         workdir: /projects/ansible-role-tower-config
 
