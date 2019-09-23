@@ -46,13 +46,15 @@ commands:
       - type: exec
         command: molecule test
         component: ansible
-        workdir: /projects/ansible-role-tower-config/molecule
+        workdir: /projects/ansible-role-tower-config
+
   - name: "Yamllint: workshops"
     actions:
       - type: exec
         command: yamllint .
         component: ansible
         workdir: /projects/workshops
+
   - name: "Workshop: RHEL"
     actions:
       - type: exec
