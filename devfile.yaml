@@ -12,7 +12,7 @@ projects:
       location: 'https://github.com/victorock/ansible-role-tower-config'
       type: git
       branch: dev
-- name: workshops
+  - name: workshops
     source:
       location: 'https://github.com/ansible/workshops'
       type: git
