@@ -32,6 +32,9 @@ components:
     args:
       - '-f'
       - /dev/null
+    env:
+      - name: HOME
+        value: /projects/
 
   - alias: ansible-plugin
     type: chePlugin

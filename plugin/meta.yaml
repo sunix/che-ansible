@@ -12,9 +12,12 @@ category: Language
 firstPublicationDate: '2019-08-20'
 spec:
   containers:
-  - image: quay.io/sunix/che-remote-plugin-ansible
+  - image: quay.io/victorock/che-remote-plugin-ansible
     name: vscode-ansible
     memoryLimit: '1Gi'
+    env:
+      - name: HOME
+        value: /projects/
   extensions:
   - https://marketplace.visualstudio.com/_apis/public/gallery/publishers/vscoss/vsextensions/vscode-ansible/0.5.2/vspackage
 
