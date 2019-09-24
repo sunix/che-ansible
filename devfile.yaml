@@ -24,12 +24,11 @@ projects:
 components:
   - alias: ansible
     type: dockerimage
-    image: quay.io/victorock/che-remote-plugin-ansible
+    image: quay.io/sunix/che-remote-plugin-ansible
     memoryLimit: 512M
     mountSources: true
-    command:
-      - tail
     args:
+      - tail
       - '-f'
       - /dev/null
     env:
