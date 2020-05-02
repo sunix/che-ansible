@@ -15,6 +15,7 @@ spec:
   - image: quay.io/sunix/che-remote-plugin-ansible
     name: vscode-ansible
     memoryLimit: '512M'
+    args: /remote-endpoint/plugin-remote-endpoint
   extensions:
-  - https://marketplace.visualstudio.com/_apis/public/gallery/publishers/vscoss/vsextensions/vscode-ansible/0.5.2/vspackage
+  - https://github.com/sunix/che-ansible/releases/download/0.5.2/vscoss.vscode-ansible-0.5.2.vsix
 
